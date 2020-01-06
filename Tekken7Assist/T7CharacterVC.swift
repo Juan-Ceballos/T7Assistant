@@ -10,8 +10,65 @@ import UIKit
 
 class T7CharacterVC: UIViewController {
 
+    @IBOutlet weak var charSearchBar: UISearchBar!
+    @IBOutlet weak var charTableView: UITableView!
+    
+    var characters = [Character]()   {
+        didSet  {
+            DispatchQueue.main.async {
+                self.charTableView.reloadData()
+            }
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        charTableView.dataSource = self
+        charTableView.delegate = self
+        loadData()
+    }
+    
+    func loadData() {
+        CharacterAPI.fetchCharacters { [weak self] (result) in
+            switch result   {
+            case .failure(let appError):
+                print(appError)
+            case .success(let character):
+                self?.characters = character
+            }
+        }
+    }
+    
+}
+
+extension T7CharacterVC: UITableViewDataSource  {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return characters.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = charTableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharaceterCell
+        
+            else    {
+                fatalError()
+        }
+        
+        let character = characters[indexPath.row]
+        
+        var charName = character.label.lowercased().replacingOccurrences(of: " ", with: "-")
+        
+        if charName == "geese"
+        {charName = "geese-howard"}
+        
+        cell.configureCell(imageURL: "https://media.eventhubs.com/images/tekken7/character_header_\(charName)_alt.jpg", character: character)
+        
+        return cell
+    }
+}
+
+extension T7CharacterVC: UITableViewDelegate    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 }
 

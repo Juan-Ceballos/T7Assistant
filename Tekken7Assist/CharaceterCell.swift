@@ -9,11 +9,22 @@
 import UIKit
 
 class CharaceterCell: UITableViewCell    {
+    
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterImage: UIImageView!
     
-    func configureCell()    {
-        
+    func configureCell(imageURL: String, character: Character)    {
+        characterImage.getImage(with: imageURL) { [weak self] (result) in
+            switch result   {
+            case .failure(let appError):
+                print(appError)
+            case .success(let charImage):
+                DispatchQueue.main.async {
+                    self?.characterImage.image = charImage
+                }
+            }
+        }
+        characterName.text = character.label
     }
     
 }

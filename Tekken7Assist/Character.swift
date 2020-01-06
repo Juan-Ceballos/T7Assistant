@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Character    {
+struct Character: Decodable    {
     let name: String
     let label: String
 }

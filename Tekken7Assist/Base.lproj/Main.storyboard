@@ -23,26 +23,39 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CharacterCell" rowHeight="153" id="Go5-Qa-Vbg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="characterCell" rowHeight="153" id="Go5-Qa-Vbg" customClass="CharaceterCell" customModule="Tekken7Assist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="153"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Go5-Qa-Vbg" id="af2-o8-FsI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXz-WC-W8R">
-                                                    <rect key="frame" x="0.0" y="11" width="157" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MXz-WC-W8R">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="153"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="0ad-Ys-UO6"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Character Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgO-YR-VXI">
-                                                    <rect key="frame" x="227" y="66" width="126" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgO-YR-VXI">
+                                                    <rect key="frame" x="232" y="66" width="154" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FgO-YR-VXI" firstAttribute="leading" secondItem="MXz-WC-W8R" secondAttribute="trailing" constant="32" id="60r-wc-96A"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FgO-YR-VXI" secondAttribute="trailing" constant="8" id="TCa-Po-fFf"/>
+                                                <constraint firstItem="MXz-WC-W8R" firstAttribute="top" secondItem="af2-o8-FsI" secondAttribute="top" id="TtR-TZ-8mX"/>
+                                                <constraint firstItem="MXz-WC-W8R" firstAttribute="leading" secondItem="af2-o8-FsI" secondAttribute="leading" id="drd-sC-avB"/>
+                                                <constraint firstItem="FgO-YR-VXI" firstAttribute="centerY" secondItem="MXz-WC-W8R" secondAttribute="centerY" id="fGh-xc-kfh"/>
+                                                <constraint firstAttribute="bottom" secondItem="MXz-WC-W8R" secondAttribute="bottom" id="lJr-ja-EbI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="characterImage" destination="MXz-WC-W8R" id="6Bb-Uk-RHc"/>
+                                            <outlet property="characterName" destination="FgO-YR-VXI" id="LeY-ak-CRN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -60,6 +73,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="charTableView" destination="d8m-dt-PtM" id="srs-ME-aVK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
