@@ -39,6 +39,10 @@ class T7CharacterVC: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //
+    }
+    
 }
 
 extension T7CharacterVC: UITableViewDataSource  {
