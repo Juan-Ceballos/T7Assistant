@@ -37,4 +37,32 @@ class CharacterAPI  {
         
     }
     
+    static func fetchMovelist(charName: String, completion: @escaping (Result<[MoveList], AppError>) -> ()) {
+        let endpointURL = "https://t7api.herokuapp.com/character/\(charName)?cmd"
+        
+        guard let url = URL(string: endpointURL)
+            else    {
+                completion(.failure(.badURL(endpointURL)))
+                return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result   {
+            case .failure(let appError):
+                print(appError)
+            case .success(let data):
+                do  {
+                    let moveList = try JSONDecoder().decode([MoveList].self, from: data)
+                    
+                    completion(.success(moveList))
+                }
+                catch   {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+    
 }

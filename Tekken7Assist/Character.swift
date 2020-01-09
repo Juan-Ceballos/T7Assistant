@@ -11,4 +11,12 @@ import Foundation
 struct Character: Decodable    {
     let name: String
     let label: String
+    var charName: String    {
+        var characterName = self.label.lowercased().replacingOccurrences(of: " ", with: "-")
+        
+        if characterName == "geese"
+        {characterName = "geese-howard"}
+        
+        return characterName
+    }
 }

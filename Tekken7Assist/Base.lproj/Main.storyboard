@@ -73,6 +73,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dGz-bs-zJQ"/>
                     <connections>
+                        <outlet property="charSearchBar" destination="tqz-5x-FbO" id="b9O-Kw-tZr"/>
                         <outlet property="charTableView" destination="d8m-dt-PtM" id="srs-ME-aVK"/>
                     </connections>
                 </viewController>
@@ -80,21 +81,42 @@
             </objects>
             <point key="canvasLocation" x="742.02898550724649" y="36.830357142857139"/>
         </scene>
-        <!--DetailT7 CharVC-->
+        <!--Move List-->
         <scene sceneID="XMX-LS-3ug">
             <objects>
                 <viewController id="9XS-rq-7pR" customClass="DetailT7CharVC" customModule="Tekken7Assist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="l5U-TV-oLf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8j-AK-Eik">
+                                <rect key="frame" x="0.0" y="247" width="414" height="615"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUA-5w-t1f">
+                                <rect key="frame" x="20" y="203" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="z9k-2y-Skm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EtC-9j-9j6"/>
+                    <navigationItem key="navigationItem" title="Move List" id="EtC-9j-9j6"/>
+                    <connections>
+                        <outlet property="charNameLabel" destination="DUA-5w-t1f" id="rke-ll-Wgn"/>
+                        <outlet property="moveListTextView" destination="w8j-AK-Eik" id="FNb-gO-D34"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMB-az-elU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="37"/>
+            <point key="canvasLocation" x="1473.913043478261" y="36.830357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tow-rT-IX5">
